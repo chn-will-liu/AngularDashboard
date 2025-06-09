@@ -89,7 +89,7 @@ Open `/coverage/angular-dashboard/index.html` to see the code coverage.
 
 ![Scalling algorithm](./public/scale-algorithm.png)
 
-Scaling with the box's `(0, 0)` point makes `translate` easier to understand.
+Scaling with the box's `(left, top)` point makes `translate` easier to understand.
 
 ### Edge cases
 
