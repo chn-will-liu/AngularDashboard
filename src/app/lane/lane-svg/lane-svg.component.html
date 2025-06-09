@@ -5,24 +5,27 @@
   <svg:rect id="laneVertexType_PRE_MERGE_POINT" x="-20" y="-20" rx="10" ry="10" width="40" height="40" fill="#d0b224" />
   <svg:polygon id="laneVertexType_LANE_MERGE" points="0,22 22,0 0,-22 -22,0" fill="#ff5246" />
   <svg:polygon id="laneVertexType_DEFAULT" points="20,20 0,-17 -20,20" fill="#cb3299" />
+  <svg:g id="laneSvgLegend" transform="scale(0.5)">
+    <svg:rect x="30" y="30" width="400" height="300" class="legend__bg" />
+    <svg:a routerLink="../">
+      <svg:text x="410" y="70" class="legend__link">&lt;back</svg:text>
+      <svg:title>Go back to the list page</svg:title>
+    </svg:a>
+    <svg:text x="40" y="70">Legend:</svg:text>
+    <svg:use href="#laneVertexType_SERVICE_POINT" x="70" y="110" />
+    <svg:text x="100" y="120">Service Point</svg:text>
+    <svg:use href="#laneVertexType_PRE_MERGE_POINT" x="70" y="170" />
+    <svg:text x="100" y="180">Pre-Merge Point</svg:text>
+    <svg:use href="#laneVertexType_LANE_MERGE" x="70" y="230" />
+    <svg:text x="100" y="240">Lane Merge</svg:text>
+    <svg:use href="#laneVertexType_DEFAULT" x="70" y="290" />
+    <svg:text x="100" y="300">Present</svg:text>
+  </svg:g>
 </svg:defs>
 
 <!-- draw legend -->
 <svg:g class="legend">
-  <svg:rect x="30" y="30" width="400" height="300" class="legend__bg" />
-  <svg:a routerLink="../">
-    <svg:text x="410" y="70" class="legend__link">&lt; back</svg:text>
-    <svg:title>Go back to the list page</svg:title>
-  </svg:a>
-  <svg:text x="40" y="70">Legend:</svg:text>
-  <svg:use href="#laneVertexType_SERVICE_POINT" x="70" y="110" />
-  <svg:text x="100" y="120">Service Point</svg:text>
-  <svg:use href="#laneVertexType_PRE_MERGE_POINT" x="70" y="170" />
-  <svg:text x="100" y="180">Pre-Merge Point</svg:text>
-  <svg:use href="#laneVertexType_LANE_MERGE" x="70" y="230" />
-  <svg:text x="100" y="240">Lane Merge</svg:text>
-  <svg:use href="#laneVertexType_DEFAULT" x="70" y="290" />
-  <svg:text x="100" y="300">Present</svg:text>
+  <svg:use href="#laneSvgLegend" y="900"></svg:use>
 </svg:g>
 
 <svg:g>

@@ -81,7 +81,9 @@ Open `/coverage/angular-dashboard/index.html` to see the code coverage.
     - Set `[containerBox.x + diffX / 2, containerBox.y + diffY / 2]` as the `dest` point
     - Return `[dest.x - origin.x, dest.y - origin.y]`
 
-  - Transform maxtrix is `scale(s) translate(tx,ty)`
+  - Flip by X axis and then center it so that `(0, 0)` starts from `(left, bottom)` corner 
+
+  - Transform maxtrix is `flipX() scale(s) translate(tx,ty)`
 
 - Traverse every vertex and its interior path location, apply the transformation to every coordinates
 
@@ -96,7 +98,7 @@ Scaling with the box's `(0, 0)` point makes `translate` easier to understand.
 
 ### Third party library
 
-The npm package `transformation-matrix` is used to help with 2D points transformation. The two transform functions being used are `scale()` and `translate()`.
+The npm package `transformation-matrix` is used to help with 2D points transformation. The two transform functions being used are `scale()`, `translate()`, and `flipX()`.
 
 Why matrix? Because when it comes to coordinate transformation, it's all about linear algebra.
 
@@ -105,7 +107,7 @@ Why matrix? Because when it comes to coordinate transformation, it's all about l
 - Viewport margin configurable
 - Viewport size configurable
 - Edge cases covered (single vertical or horizonal lane)
-- Using matrix for coordinates transformation (roate, flip and more can be easily supported)
+- Using matrix for coordinates transformation
 - SVG: using `<defs>` and `<use>` for shape resuability
 - Angular signals
 

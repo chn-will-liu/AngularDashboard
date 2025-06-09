@@ -40,5 +40,5 @@ module.exports = tseslint.config(
     rules: {},
   },
   eslintConfigPrettier,
-  eslintPluginPrettierRecommended,
+  eslintPluginPrettierRecommended
 );

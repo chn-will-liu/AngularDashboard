@@ -1,6 +1,13 @@
-import { applyToPoint, compose, identity, Matrix, scale as scaleTransform, translate } from 'transformation-matrix';
-
 import { Injectable } from '@angular/core';
+import {
+  applyToPoint,
+  compose,
+  flipX,
+  identity,
+  Matrix,
+  scale as scaleTransform,
+  translate,
+} from 'transformation-matrix';
 
 import { Vertex, VertexLocation } from '../../../core/lane.types';
 import { BoundingBox, ViewportConfig } from './vertices-transform.type';
@@ -29,7 +36,7 @@ export class VerticesTransformService {
       w: viewportWidth - 2 * marginX,
       h: viewportHeight - 2 * marginY,
     };
-    return this.calculateTransformMatrix(boundingBox, containerBox);
+    return this.calculateTransformMatrix(boundingBox, containerBox, viewportHeight);
   }
 
   /**
@@ -60,8 +67,9 @@ export class VerticesTransformService {
    * Calculating the transform matrix to fit the box into the container box using `object-fit: contain`-like strategy.
    * @param box The bounding box that needs to be transformed
    * @param containerBox The containing box that you want the box to be fit into
+   * @param viewportHeight The viewport height used to flip the content by X axis to denote the origin being (left, bottom)
    */
-  private calculateTransformMatrix(box: BoundingBox, containerBox: BoundingBox): Matrix {
+  private calculateTransformMatrix(box: BoundingBox, containerBox: BoundingBox, viewportHeight: number): Matrix {
     if (
       !this.isValidNumber(box.w) ||
       !this.isValidNumber(box.h) ||
@@ -88,8 +96,14 @@ export class VerticesTransformService {
     const translateX = containerBox.x + (containerBox.w - box.w * scale) / 2 - box.x;
     const translateY = containerBox.y + (containerBox.h - box.h * scale) / 2 - box.y;
 
+    // Flip by X axis to denote that in real word (0,0) is always the bottom left corner instead of top left
     // Be noticed that the order of composition is the reverse order of transform application.
-    return compose(translate(translateX, translateY), scaleTransform(scale, scale, box.x, box.y));
+    return compose(
+      translate(0, viewportHeight),
+      flipX(),
+      translate(translateX, translateY),
+      scaleTransform(scale, scale, box.x, box.y)
+    );
   }
 
   /**
