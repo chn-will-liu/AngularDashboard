@@ -9,6 +9,12 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development
 
+To clone this project, run:
+
+```bash
+git clone https://github.com/chn-will-liu/AngularDashboard.git
+```
+
 To restore all the npm dependencies, run:
 
 ```bash
