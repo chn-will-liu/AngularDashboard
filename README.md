@@ -5,7 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Environment
 
 - NodeJS: >= v22.0.0
-- NPM: >= 9.0.0
+- NPM: >= v9.0.0
 
 ## Development
 
@@ -72,7 +72,7 @@ Open `/coverage/angular-dashboard/index.html` to see the code coverage.
   - Calculate scale
 
     - Calculate `scaleX` and `scaleY`. If the aspect ratio of the lane bounding box is greater than the container's, use `scaleX`, otherwise use `scaleY` as the scale factor
-    - Scaling will be applied with transform origin set to the lane boundind box's `(left, top)` point
+    - Scaling will be applied with transform origin being set to the lane bounding box's `(left, top)` corner
 
   - Calculate `[tx, ty]` for `translate()` after scaling
 
@@ -81,11 +81,13 @@ Open `/coverage/angular-dashboard/index.html` to see the code coverage.
     - Set `[containerBox.x + diffX / 2, containerBox.y + diffY / 2]` as the `dest` point
     - Return `[dest.x - origin.x, dest.y - origin.y]`
 
-  - Transform required to fit the lane is `scale(s) translate(tx,ty)`
+  - Transform maxtrix is `scale(s) translate(tx,ty)`
 
 - Traverse every vertex and its interior path location, apply the transformation to every coordinates
 
 ![Scalling algorithm](./public/scale-algorithm.png)
+
+Scaling with the box's `(0, 0)` point makes `translate` easier to understand.
 
 ### Edge cases
 

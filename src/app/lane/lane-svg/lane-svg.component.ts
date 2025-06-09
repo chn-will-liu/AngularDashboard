@@ -1,5 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 import { Lane } from '../../core/lane.types';
 import { AdjacentLineComponent } from './adjacent-line/adjacent-line.component';
 import { VerticesTransformService } from './vertices-transform/vertices-transform.service';
@@ -35,7 +36,7 @@ export class LaneSvgComponent {
 
   /**
    * The scale factor for the lane to be fit into the viewport.
-   * Since we keep the aspect ratio of the orginal lane, the scale factor is the same for both x and y axes.
+   * Since we keep the aspect ratio of the orginal lane, the scale factor is the same for both x and y axis.
    */
   protected readonly scale = computed(() => this.transformMatrix().a);
   protected readonly laneWidthInPixels = computed(() => this.scale() * this.laneWidthInMeters);
