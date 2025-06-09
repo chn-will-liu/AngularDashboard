@@ -35,8 +35,15 @@ export class LaneSvgComponent {
   });
 
   /**
-   * The scale factor for the lane to be fit into the viewport.
-   * Since we keep the aspect ratio of the orginal lane, the scale factor is the same for both x and y axis.
+   * The scale factor for the lane graph to be fit into the viewport.
+   * Since we keep the aspect ratio of the orginal graph, the scale factor is the same for both x and y axis.
+   *
+   * ```
+   * [a c e]
+   * [b d f]
+   * [0 0 1]
+   * ```
+   * Simply use `a` will just work.
    */
   protected readonly scale = computed(() => this.transformMatrix().a);
   protected readonly laneWidthInPixels = computed(() => this.scale() * this.laneWidthInMeters);

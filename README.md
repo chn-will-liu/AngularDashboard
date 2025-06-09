@@ -105,17 +105,19 @@ Why matrix? Because when it comes to coordinate transformation, it's all about l
 - Viewport margin configurable
 - Viewport size configurable
 - Edge cases covered (single vertical or horizonal lane)
-- Using matrix for coordinates transformation
+- Using matrix for coordinates transformation (roate, flip and more can be easily supported)
+- SVG: using `<defs>` and `<use>` for shape resuability
+- Angular signals
 
 ## Trade-off
 
 ### Scaling
 
-Since the lane graphic is scaled to fit into the viewport, the lane width renders differently depending on the size of the entire lane graphic. This is okay, but the marker of vertices don't scale along with the lane.
+Since the lane graph is scaled to fit into the viewport, the lane width renders differently depending on the size of the entire lane graph. This is okay, but the marker of vertices don't scale along with the lane.
 
 This means sometimes the marker looks smaller comparing to the lane width, which may or may not make sense depending on the business requirement.
 
-If the marker also needs to be scaled along with the entire lane graphic, we might have better and simpler solutions.
+If the marker also needs to be scaled along with the entire lane graph, we might have better and simpler solutions.
 
 ### HttpResource
 
