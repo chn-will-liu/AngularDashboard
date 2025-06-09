@@ -1,0 +1,17 @@
+@if (laneListResource.isLoading()) {
+  <div>Loading lane list...</div>
+} @else if (laneListResource.hasValue()) {
+  <h1>Lanes</h1>
+  <p>Please select a lane to view details</p>
+  <nav>
+    <ul class="lane-list">
+      @for (lane of laneListResource.value(); track lane.id) {
+        <li calss="lane-item">
+          <a [routerLink]="['/lanes', lane.id]" class="lane-item__link" data-testId="laneItemLink">{{ lane.name }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+} @else {
+  <div>Error loading lane list: {{ laneListResource.error() }}</div>
+}

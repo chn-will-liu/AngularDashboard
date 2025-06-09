@@ -1,0 +1,49 @@
+:host {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  animation: 0.5s fade-in ease-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.legend {
+  scale: 0.5;
+  // size in svg are based on the viewBox size
+  font-size: 32px;
+}
+
+.legend__bg {
+  fill: #fff;
+  stroke: #000;
+}
+
+.legend__link {
+  fill: #1447e2;
+  text-anchor: end;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.service-point-label {
+  text-anchor: middle;
+  alignment-baseline: text-before-edge;
+  // size in svg are based on the viewBox size
+  font-size: 32px;
+}
+
+.adjacent-line {
+  fill: none;
+  stroke: #e1eff6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
